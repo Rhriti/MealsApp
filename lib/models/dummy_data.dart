@@ -13,32 +13,32 @@ final  List DUMMY_CATEGORIES = [
     id: 'c2',
     title: 'Quick & Easy',
     color: Colors.red,
-    image:  AssetImage('assets/italian.jpg')
+    image:  AssetImage('assets/burger.jfif')
   ),
 
   Category(
     id: 'c3',
     title: 'Hamburgers',
     color: Colors.orange,
-    image:AssetImage('assets/italian.jpg')
+    image:AssetImage('assets/hamburger.jfif')
   ),
   Category(
     id: 'c4',
     title: 'German',
     color: Colors.amber,
-    image: AssetImage('assets/italian.jpg')
+    image: AssetImage('assets/german.jfif')
   ),
   Category(
     id: 'c5',
     title: 'Light & Lovely',
     color: Colors.blue,
-    image: AssetImage('assets/italian.jpg')
+    image: AssetImage('assets/icecream.jfif')
   ),
   Category(
     id: 'c6',
     title: 'Exotic',
     color: Colors.green,
-    image: AssetImage('assets/italian.jpg')
+    image: AssetImage('assets/indian.jpg')
   ),
   Category(
     id: 'c7',
@@ -50,18 +50,18 @@ final  List DUMMY_CATEGORIES = [
     id: 'c8',
     title: 'Asian',
     color: Colors.lightGreen,
-    image: AssetImage('assets/italian.jpg')
+    image: AssetImage('assets/indian.jpg')
   ),
   Category(
     id: 'c9',
     title: 'French',
     color: Colors.pink,
-    image: AssetImage('assets/italian.jpg')
+    image: AssetImage('assets/french.jfif')
   ),
   Category(
     id: 'c10',
     title: 'Summer',
     color: Colors.teal,
-    image: AssetImage('assets/italian.jpg')
+    image: AssetImage('assets/indian.jpg')
   ),
 ];
