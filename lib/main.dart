@@ -3,6 +3,8 @@ import 'homescreen.dart';
 void main() => runApp(MaterialApp(
       home: Meals(),
       title: 'Meals app',
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      themeMode: ThemeMode.dark,
     ));
 
 class Meals extends StatefulWidget {
