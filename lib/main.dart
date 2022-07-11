@@ -14,6 +14,6 @@ class Meals extends StatefulWidget {
 class _MealsState extends State<Meals> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:Homescreen(),appBar: AppBar(title: Text('meals mela'),),);
+    return Scaffold(body:Homescreen(),appBar: AppBar(title: Text('Meals Mela'),),);
   }
 }
