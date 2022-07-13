@@ -1,8 +1,10 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/dummy_data.dart';
 import 'meal.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class Mealslist extends StatelessWidget {
   //const Mealslist({Key? key}) : super(key: key);
@@ -32,7 +34,6 @@ class Mealslist extends StatelessWidget {
         return '_____';
     }
   }
-
 
   String? afford(Affordability af) {
     switch (af) {
@@ -64,11 +65,19 @@ class Mealslist extends StatelessWidget {
           padding: EdgeInsets.only(top: 20, bottom: 20),
           height: 200,
           width: double.infinity,
-          child: Image(
-            image: NetworkImage(mealslist[index].imageUrl),
-            height: 200,
-            fit: BoxFit.fitWidth,
-          )),
+          // child: Image(
+          //   image: NetworkImage(mealslist[index].imageUrl),
+          //   height: 200,
+          //   fit: BoxFit.fitWidth,
+          // )
+          child: Image.network(mealslist[index].imageUrl,
+              height: 200, fit: BoxFit.fitWidth,
+              loadingBuilder: (ctx, Widget child, loadingprogress) {
+            if (loadingprogress == null) {
+              return child;
+            }
+            return LoadingAnimationWidget.flickr(leftDotColor: Colors.amber, rightDotColor: Colors.pink, size: 40);
+          })),
       Row(
           //mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -76,7 +85,9 @@ class Mealslist extends StatelessWidget {
             Row(
               children: [
                 const Icon(Icons.timer_outlined),
-                SizedBox(width: 5,),
+                SizedBox(
+                  width: 5,
+                ),
                 Text(mealslist[index].duration.toString()),
               ],
             ),
@@ -85,15 +96,15 @@ class Mealslist extends StatelessWidget {
                 const Icon(
                   Icons.shopping_bag_outlined,
                 ),
-                SizedBox(width: 5,),
+                SizedBox(
+                  width: 5,
+                ),
                 Text(comp(mealslist[index].complexity) as String),
               ],
             ),
             Row(
               children: [
-                const Icon(
-                  Icons.currency_rupee
-                ),
+                const Icon(Icons.currency_rupee),
                 Text(afford(mealslist[index].affordability) as String),
               ],
             )
