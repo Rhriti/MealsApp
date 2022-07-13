@@ -1,21 +1,31 @@
+
 import 'package:flutter/material.dart';
 import 'homescreen.dart';
-void main() => runApp(MaterialApp(
-      home: Meals(),
-      title: 'Meals app',
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      themeMode: ThemeMode.dark,
-    ));
+import './mealsscreen.dart';
 
-class Meals extends StatefulWidget {
+
+void main() => runApp(MaterialApp(
+    home: Home(),
+    title: 'Meals app',
+    darkTheme: ThemeData(brightness: Brightness.dark),
+    themeMode: ThemeMode.dark,
+     // app chalu is screen se hoga ie homescreen se 
+    routes: { '/meals_detail': (ctx) => Mealsscreen(),}));
+
+class Home extends StatefulWidget {
   //Meals({Key? key}) : super(key: key);
   @override
-  State<Meals> createState() => _MealsState();
+   State<Home> createState() => _HomeState();
 }
 
-class _MealsState extends State<Meals> {
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:Homescreen(),appBar: AppBar(title: Text('Meals Mela'),),);
+    return Scaffold(
+      body: Homescreen(),
+      appBar: AppBar(
+        title: Text('Meals Mela'),
+      ),
+    );
   }
 }
