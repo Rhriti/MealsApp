@@ -10,16 +10,19 @@ class Homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10),
-      child: GridView(
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: MediaQuery.of(context).size.width * .5,
-              childAspectRatio: 1.5,
-              mainAxisSpacing: 30,
-              crossAxisSpacing: 20),
-          children: Categorylist(context).func(),
-          ),
+    return Scaffold(
+      appBar: AppBar(title:Text('Meals Mela')),
+      body: Padding(
+        padding: EdgeInsets.all(10),
+        child: GridView(
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: MediaQuery.of(context).size.width * .5,
+                childAspectRatio: 1.5,
+                mainAxisSpacing: 30,
+                crossAxisSpacing: 20),
+            children: Categorylist(context).func(),
+            ),
+      ),
     );
   }
 }

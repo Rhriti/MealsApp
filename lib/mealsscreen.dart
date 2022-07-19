@@ -23,18 +23,17 @@ class Mealsscreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(DUMMY_CATEGORIES[routeArgs as int].title),
       ),
-      body: Center(
-        child: InkWell(
-            child: Padding(
-                padding: const EdgeInsets.only(right: 20,left:20),
-                child: ListView.builder(
-                  itemCount: meals_list.length,
-        
-                  itemBuilder: (_, index) {
-                    return Mealslist(meals_list,index);
-                  },
-                ))),
-      ),
+      body: Padding(
+          padding: const EdgeInsets.only(right: 20, left: 20, top: 20,bottom: 20),
+          child: ListView.separated(
+            separatorBuilder: (_, index) {
+              return SizedBox(height: 15);
+            },
+            itemCount: meals_list.length,
+            itemBuilder: (ctx, index) {
+              return Mealslist(meals_list, index);
+            },
+          )),
     );
   }
 }

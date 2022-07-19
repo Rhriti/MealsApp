@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/dummy_data.dart';
@@ -61,23 +60,44 @@ class Mealslist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Container(
-          padding: EdgeInsets.only(top: 20, bottom: 20),
+      InkWell(
+        onTap: () => Navigator.of(context)
+            .pushNamed('/recepie', arguments: mealslist[index]),
+        child: Container(
+          //decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           height: 200,
           width: double.infinity,
-          // child: Image(
-          //   image: NetworkImage(mealslist[index].imageUrl),
-          //   height: 200,
-          //   fit: BoxFit.fitWidth,
-          // )
-          child: Image.network(mealslist[index].imageUrl,
-              height: 200, fit: BoxFit.fitWidth,
-              loadingBuilder: (ctx, Widget child, loadingprogress) {
-            if (loadingprogress == null) {
-              return child;
-            }
-            return LoadingAnimationWidget.flickr(leftDotColor: Colors.amber, rightDotColor: Colors.pink, size: 40);
-          })),
+          child: FittedBox(
+            fit: BoxFit.fill,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child:
+                  Image.network(mealslist[index].imageUrl, fit: BoxFit.fitWidth,
+                      loadingBuilder: (ctx, Widget child, loadingprogress) {
+                if (loadingprogress == null) {
+                  return child;
+                }
+                return LoadingAnimationWidget.bouncingBall(
+                    color: Colors.white38, size: 5);
+              },frameBuilder: (BuildContext context, Widget child, int? frame,
+            bool wasSynchronouslyLoaded) {
+          if (wasSynchronouslyLoaded) {
+            return child;
+          }
+          return AnimatedOpacity(
+            opacity: frame == null ? 0 : 1,
+            duration: const Duration(seconds: 1),
+            curve: Curves.easeOut,
+            child: child,
+          );
+        },),
+            ),
+          ),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
       Row(
           //mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,

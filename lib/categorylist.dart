@@ -8,8 +8,9 @@ class Categorylist {
   Categorylist(this.context);
 
   void navigate(BuildContext ctx, int index) {
-    Navigator.of(context).pushNamed('/meals_detail',arguments: index );
+    Navigator.of(context).pushNamed('/meals_detail', arguments: index);
   }
+
 
   List<Widget> func() => List.generate(DUMMY_CATEGORIES.length, (index) {
         return InkWell(
