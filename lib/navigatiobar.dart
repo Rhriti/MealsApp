@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homescreen.dart';
 import 'favouritescreen.dart';
+import 'maindrawer.dart';
 
 class Navigationbar extends StatefulWidget {
   //Navigationbar({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class Navigationbar extends StatefulWidget {
 
 class _NavigationbarState extends State<Navigationbar> {
   final _screen = [
-    Homescreen(),Favouritescreen()
+    {'screen':Homescreen(),'title':'Meals Mela'},{'screen':Favouritescreen(),'title':'Favourites'}
   ];
   int index = 0;
 
@@ -23,7 +24,9 @@ class _NavigationbarState extends State<Navigationbar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: _screen[index] as Widget,
+      appBar: AppBar(title: Text(_screen[index]['title'] as String),),
+      drawer: Maindrawer(),
+        body: _screen[index]['screen'] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           iconSize: 30,
           items: <BottomNavigationBarItem>[
@@ -38,7 +41,6 @@ class _NavigationbarState extends State<Navigationbar> {
           ],
           currentIndex: index,
           onTap: changescreen,
-        )
-        );
+        ));
   }
 }

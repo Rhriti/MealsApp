@@ -11,7 +11,6 @@ class Homescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:Text('Meals Mela')),
       body: Padding(
         padding: EdgeInsets.all(10),
         child: GridView(

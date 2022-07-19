@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mealsapp/mealsscreen.dart';
 import 'package:mealsapp/models/dummy_data.dart';
 import 'meal.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:mealsapp/mealslist.dart';
 
 class Mealslist extends StatelessWidget {
   //const Mealslist({Key? key}) : super(key: key);
@@ -57,12 +59,17 @@ class Mealslist extends StatelessWidget {
     }
   }
 
+  static int? mealid;
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       InkWell(
         onTap: () => Navigator.of(context)
-            .pushNamed('/recepie', arguments: mealslist[index]),
+            .pushNamed('/recepie', arguments: mealslist[index])
+            .then((value) {
+          mealid = value as int;
+        }),
         child: Container(
           //decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           height: 200,
@@ -71,26 +78,29 @@ class Mealslist extends StatelessWidget {
             fit: BoxFit.fill,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(40),
-              child:
-                  Image.network(mealslist[index].imageUrl, fit: BoxFit.fitWidth,
-                      loadingBuilder: (ctx, Widget child, loadingprogress) {
-                if (loadingprogress == null) {
-                  return child;
-                }
-                return LoadingAnimationWidget.bouncingBall(
-                    color: Colors.white38, size: 5);
-              },frameBuilder: (BuildContext context, Widget child, int? frame,
-            bool wasSynchronouslyLoaded) {
-          if (wasSynchronouslyLoaded) {
-            return child;
-          }
-          return AnimatedOpacity(
-            opacity: frame == null ? 0 : 1,
-            duration: const Duration(seconds: 1),
-            curve: Curves.easeOut,
-            child: child,
-          );
-        },),
+              child: Image.network(
+                mealslist[index].imageUrl,
+                fit: BoxFit.fitWidth,
+                loadingBuilder: (ctx, Widget child, loadingprogress) {
+                  if (loadingprogress == null) {
+                    return child;
+                  }
+                  return LoadingAnimationWidget.bouncingBall(
+                      color: Colors.white38, size: 5);
+                },
+                frameBuilder: (BuildContext context, Widget child, int? frame,
+                    bool wasSynchronouslyLoaded) {
+                  if (wasSynchronouslyLoaded) {
+                    return child;
+                  }
+                  return AnimatedOpacity(
+                    opacity: frame == null ? 0 : 1,
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.easeOut,
+                    child: child,
+                  );
+                },
+              ),
             ),
           ),
         ),
