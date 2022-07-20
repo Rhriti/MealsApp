@@ -13,7 +13,7 @@ class Recepie extends StatelessWidget {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).pop(routeArgs.id);
+            Navigator.of(context).pop('kill');
           },
           child: Icon(Icons.delete),
         ),

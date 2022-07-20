@@ -55,7 +55,7 @@ final List DUMMY_CATEGORIES = [
       image: AssetImage('assets/indian.jpg')),
 ];
 
-const DUMMY_MEALS = const [
+var DUMMY_MEALS =  [
   Meal(
     id: 'm1',
     categories: [

@@ -5,14 +5,18 @@ import 'package:mealsapp/models/dummy_data.dart';
 import 'meal.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:mealsapp/mealslist.dart';
 
-class Mealslist extends StatelessWidget {
+class Mealslist extends StatefulWidget {
   //const Mealslist({Key? key}) : super(key: key);
   final List<Meal> mealslist;
   final int index;
   Mealslist(this.mealslist, this.index);
 
+  @override
+  State<Mealslist> createState() => _MealslistState();
+}
+
+class _MealslistState extends State<Mealslist> {
   String? comp(Complexity c) {
     switch (c) {
       case (Complexity.Simple):
@@ -59,16 +63,19 @@ class Mealslist extends StatelessWidget {
     }
   }
 
-  static int? mealid;
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Column(children: (widget.mealslist[widget.index].delete==false)? [
       InkWell(
         onTap: () => Navigator.of(context)
-            .pushNamed('/recepie', arguments: mealslist[index])
+            .pushNamed('/recepie', arguments: widget.mealslist[widget.index])
             .then((value) {
-          mealid = value as int;
+          if (value == 'kill') {
+            setState(() {
+      widget.mealslist[widget.index].delete = true;
+    });
+          }
         }),
         child: Container(
           //decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -79,7 +86,7 @@ class Mealslist extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(40),
               child: Image.network(
-                mealslist[index].imageUrl,
+                widget.mealslist[widget.index].imageUrl,
                 fit: BoxFit.fitWidth,
                 loadingBuilder: (ctx, Widget child, loadingprogress) {
                   if (loadingprogress == null) {
@@ -118,7 +125,7 @@ class Mealslist extends StatelessWidget {
                 SizedBox(
                   width: 5,
                 ),
-                Text(mealslist[index].duration.toString()),
+                Text(widget.mealslist[widget.index].duration.toString()),
               ],
             ),
             Row(
@@ -129,16 +136,17 @@ class Mealslist extends StatelessWidget {
                 SizedBox(
                   width: 5,
                 ),
-                Text(comp(mealslist[index].complexity) as String),
+                Text(comp(widget.mealslist[widget.index].complexity) as String),
               ],
             ),
             Row(
               children: [
                 const Icon(Icons.currency_rupee),
-                Text(afford(mealslist[index].affordability) as String),
+                Text(afford(widget.mealslist[widget.index].affordability)
+                    as String),
               ],
             )
           ])
-    ]);
+    ] : []);
   }
 }

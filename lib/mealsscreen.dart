@@ -10,13 +10,10 @@ class Mealsscreen extends StatefulWidget {
 
 class _MealsscreenState extends State<Mealsscreen> {
   //const Mealsscreen({Key? key}) : super(key: key);
-  var routeArgs; //int
-  late List<Meal> meals_list;
 
   @override
-  void initState() {
-    super.initState();
-    routeArgs = ModalRoute.of(context)!.settings.arguments as int;
+  Widget build(BuildContext context) {
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as int;
     final catid = DUMMY_CATEGORIES[routeArgs as int].id;
     List<Meal> meals_list = DUMMY_MEALS.where((meals) {
       for (var id in meals.categories) {
@@ -25,16 +22,6 @@ class _MealsscreenState extends State<Mealsscreen> {
       return false;
       //return meals.categories.contains(catid);
     }).toList();
-  }
-
-  void deltemeals() {
-    setState(() {
-      meals_list.removeWhere((element) => element.id == Mealslist.mealid);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(DUMMY_CATEGORIES[routeArgs as int].title),
@@ -46,8 +33,9 @@ class _MealsscreenState extends State<Mealsscreen> {
             separatorBuilder: (_, index) {
               return SizedBox(height: 15);
             },
-            itemCount: meals_list.length,
+            itemCount: (meals_list != null) ? meals_list.length : 0,
             itemBuilder: (ctx, index) {
+              meals_list[index].delete = false;
               return Mealslist(meals_list, index);
             },
           )),
