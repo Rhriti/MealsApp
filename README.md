@@ -1,16 +1,9 @@
-# mealsapp
+# MEALS MELA
 
-A new Flutter project.
+          A Flutter project.
+![Cream Modern Corporate Download Our App Minimal Instagram Story](https://user-images.githubusercontent.com/76724198/179339081-45482579-1c3d-4797-96c0-c622a138f475.jpg)
 
-## Getting Started
+         Recipe app to carter your cravings!
+![Dark App  Fast Food Delivery Instagram Story](https://user-images.githubusercontent.com/76724198/179339215-86f3ff03-665e-44cb-aaaa-609ec549a68b.jpg)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+         New recipe added everyday!
