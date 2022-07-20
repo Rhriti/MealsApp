@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mealsapp/mealslist.dart';
 import 'meal.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
 class Recepie extends StatelessWidget {
   //const Recepie({Key? key}) : super(key: key);
@@ -12,12 +13,26 @@ class Recepie extends StatelessWidget {
 
     return Scaffold(
         floatingActionButton: FloatingActionButton(
+          elevation: 30,
+          tooltip: 'Tap to delete',
+          splashColor: Colors.amber,
+          backgroundColor: Color.fromARGB(255, 141, 141, 246),
           onPressed: () {
             Navigator.of(context).pop('kill');
           },
           child: Icon(Icons.delete),
         ),
-        appBar: AppBar(title: Text('Recepie')),
+        appBar: NewGradientAppBar(
+          centerTitle: true,
+          title: Text('Recipe'),
+          gradient: LinearGradient(
+            end: Alignment.bottomLeft,
+            begin: Alignment.topRight,
+            colors: [
+              Color.fromARGB(255, 34, 36, 37),Color.fromARGB(255, 141, 141, 246),
+            ],
+          ),
+        ),
         body: ListView(
           padding: EdgeInsets.all(4),
           children: [
@@ -32,23 +47,31 @@ class Recepie extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            Text(
+              'INGREDIENTS',
+              style: TextStyle(
+                fontSize: 40,
+                color: Color.fromARGB(255, 141, 141, 246),
+                letterSpacing: 4,
+                fontWeight: FontWeight.w300,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 7,),
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.white30, width: 3)),
+                  gradient: LinearGradient( colors: [
+              Color.fromARGB(255, 141, 141, 246),
+              Color.fromARGB(255, 34, 36, 37)
+            ],),
+                  borderRadius: BorderRadius.circular(30),
+                ),
               child: Wrap(
+                
                 alignment: WrapAlignment.center,
                 runSpacing: 10,
                 children: [
-                  Text(
-                    'INGREDIENTS',
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.amber,
-                      letterSpacing: 4,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
+                  SizedBox(width: 5,),
                   ...List.generate(routeArgs.ingredients.length, (index) {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -85,7 +108,7 @@ class Recepie extends StatelessWidget {
               'STEPS',
               style: TextStyle(
                 fontSize: 40,
-                color: Colors.amber,
+                color: Color.fromARGB(255, 141, 141, 246),
                 letterSpacing: 4,
                 fontWeight: FontWeight.w300,
               ),
@@ -115,9 +138,13 @@ class Recepie extends StatelessWidget {
                   }),
                 ),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 237, 200, 88),
+                  gradient: LinearGradient( colors: [
+              Color.fromARGB(255, 141, 141, 246),
+              Color.fromARGB(255, 34, 36, 37)
+            ],),
                   borderRadius: BorderRadius.circular(30),
-                ))
+                )
+                )
           ],
         ));
   }

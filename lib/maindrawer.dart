@@ -12,7 +12,7 @@ class _MaindrawerState extends State<Maindrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       
-        backgroundColor: Colors.black38,
+        backgroundColor: Color.fromARGB(255, 141, 141, 246),
         child: Column(
           children: [
             DrawerHeader(

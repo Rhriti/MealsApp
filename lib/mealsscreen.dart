@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mealsapp/mealslist.dart';
 import './models/dummy_data.dart';
 import 'meal.dart';
+import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+
 
 class Mealsscreen extends StatefulWidget {
   @override
@@ -23,8 +25,20 @@ class _MealsscreenState extends State<Mealsscreen> {
       //return meals.categories.contains(catid);
     }).toList();
     return Scaffold(
-      appBar: AppBar(
+      // appBar: AppBar(
+      //   title: Text(DUMMY_CATEGORIES[routeArgs as int].title),
+      // ),
+      appBar: NewGradientAppBar(
+        centerTitle: true,
         title: Text(DUMMY_CATEGORIES[routeArgs as int].title),
+        gradient: LinearGradient(
+          end: Alignment.bottomLeft,
+          begin: Alignment.topRight,
+          colors: [
+            Color.fromARGB(255, 141, 141, 246),
+            Color.fromARGB(255, 34, 36, 37)
+          ],
+        ),
       ),
       body: Padding(
           padding:
