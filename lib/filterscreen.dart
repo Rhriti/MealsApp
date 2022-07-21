@@ -10,6 +10,21 @@ class Filterscreen extends StatefulWidget {
 class _FilterscreenState extends State<Filterscreen> {
   //const Filterscreen({Key? key}) : super(key: key);
   bool st1 = false;
+  bool st2 = false;
+  bool st3 = false;
+
+  Widget returntile(tits, sec, index) {
+    return SwitchListTile(
+        title: Text(tits),
+        secondary: Text(
+          sec,
+          style: TextStyle(fontSize: 30),
+        ),
+        value: index,
+        onChanged: (val) {
+          index = val;
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,26 +38,28 @@ class _FilterscreenState extends State<Filterscreen> {
           child: Column(
             children: [
               Container(
-                  decoration: BoxDecoration(gradient: LinearGradient(
-                    colors: [Colors.blue,Colors.orange],begin: Alignment.topRight,end:Alignment.bottomLeft)),
-                  width: double.infinity,
-                  height: 100,
-                  child: Center(
-                    child: Text(
-                      'SELECT YOUR ❤ MEALS',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 30,fontWeight: FontWeight.w300),
-                    ),
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Color.fromARGB(255, 141, 141, 246),
+                      Color.fromARGB(255, 34, 36, 37)
+                    ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+                    borderRadius: BorderRadius.circular(20)),
+                width: double.infinity,
+                height: 100,
+                child: Center(
+                  child: Text(
+                    'SELECT YOUR ❤ MEALS',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
                   ),
                 ),
-      
-              SizedBox(height: 20,),
-              SwitchListTile(
-              title: Text('Vegan'),secondary: Text('🥦',style: TextStyle(fontSize: 30),),
-                  value: st1,
-                  onChanged: (val) {
-                    st1 = val;
-                  })
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              returntile('Vegan', '🥦',st1),
+              returntile('Lactose', '🧀', st2),
+              returntile('GLuten', '🍗', st3)
             ],
           ),
         ));
