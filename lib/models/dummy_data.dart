@@ -22,7 +22,7 @@ final List DUMMY_CATEGORIES = [
       id: 'c4',
       title: 'German',
       color: Colors.amber,
-      image: AssetImage('assets/german.jfif')),
+      image: AssetImage('assets/italian.jpg')),
   Category(
       id: 'c5',
       title: 'Light & Lovely',

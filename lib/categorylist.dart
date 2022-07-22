@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'category.dart';
 import './models/dummy_data.dart';
 import 'mealsscreen.dart';
+import 'meal.dart';
 
 class Categorylist {
   BuildContext context;
+ 
   Categorylist(this.context);
 
   void navigate(BuildContext ctx, int index) {
     Navigator.of(context).pushNamed('/meals_detail', arguments: index);
   }
 
-
   List<Widget> func() => List.generate(DUMMY_CATEGORIES.length, (index) {
+        List<Meal> dummymeal = DUMMY_MEALS;
+        
         return InkWell(
           onTap: () => navigate(context, index),
           borderRadius: BorderRadius.circular(30),
@@ -22,6 +25,7 @@ class Categorylist {
             alignment: Alignment.bottomCenter,
             //margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
             decoration: BoxDecoration(
+                border: Border.all(width: 2, color: Colors.white),
                 borderRadius: BorderRadius.circular(30),
                 image: DecorationImage(
                     colorFilter:

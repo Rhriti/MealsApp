@@ -78,16 +78,16 @@ class _MealslistState extends State<Mealslist> {
           }
         }),
         child: Container(
+          decoration: BoxDecoration(border: Border.all(color: Colors.white,width: 2),borderRadius: BorderRadius.circular(15)),
           //decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           height: 200,
           width: double.infinity,
           child: FittedBox(
             fit: BoxFit.fill,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(40),
+              borderRadius: BorderRadius.circular(50),
               child: Image.network(
                 widget.mealslist[widget.index].imageUrl,
-                fit: BoxFit.fitWidth,
                 loadingBuilder: (ctx, Widget child, loadingprogress) {
                   if (loadingprogress == null) {
                     return child;
@@ -95,18 +95,7 @@ class _MealslistState extends State<Mealslist> {
                   return LoadingAnimationWidget.bouncingBall(
                       color: Colors.white38, size: 5);
                 },
-                frameBuilder: (BuildContext context, Widget child, int? frame,
-                    bool wasSynchronouslyLoaded) {
-                  if (wasSynchronouslyLoaded) {
-                    return child;
-                  }
-                  return AnimatedOpacity(
-                    opacity: frame == null ? 0 : 1,
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.easeOut,
-                    child: child,
-                  );
-                },
+                
               ),
             ),
           ),
@@ -121,29 +110,29 @@ class _MealslistState extends State<Mealslist> {
           children: [
             Row(
               children: [
-                const Icon(Icons.timer_outlined),
+                const Icon(Icons.timer_outlined,color: Colors.white,),
                 SizedBox(
                   width: 5,
                 ),
-                Text(widget.mealslist[widget.index].duration.toString()),
+                Text(widget.mealslist[widget.index].duration.toString(),style:TextStyle(color:Colors.white),)
               ],
             ),
             Row(
               children: [
                 const Icon(
-                  Icons.shopping_bag_outlined,
+                  Icons.shopping_bag_outlined,color: Colors.white,
                 ),
                 SizedBox(
                   width: 5,
                 ),
-                Text(comp(widget.mealslist[widget.index].complexity) as String),
+                Text(comp(widget.mealslist[widget.index].complexity) as String,style:TextStyle(color:Colors.white)),
               ],
             ),
             Row(
               children: [
-                const Icon(Icons.currency_rupee),
+                const Icon(Icons.currency_rupee,color:Colors.white),
                 Text(afford(widget.mealslist[widget.index].affordability)
-                    as String),
+                    as String,style: TextStyle(color: Colors.white),),
               ],
             )
           ])

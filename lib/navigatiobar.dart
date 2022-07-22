@@ -39,6 +39,7 @@ class _NavigationbarState extends State<Navigationbar> {
           child: BottomNavigationBar(
             selectedIconTheme: IconThemeData(size: 35),
             selectedItemColor: Color.fromARGB(255, 6, 139, 247),
+            unselectedItemColor: Colors.white38,
             backgroundColor: Colors.transparent,
             iconSize: 30,
             items: <BottomNavigationBarItem>[

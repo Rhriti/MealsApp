@@ -11,8 +11,8 @@ class _MaindrawerState extends State<Maindrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
-        backgroundColor: Color.fromARGB(255, 141, 141, 246),
+        shape: Border(right: BorderSide(color: Colors.white)),
+        backgroundColor: Colors.transparent,
         child: Column(
           children: [
             DrawerHeader(
@@ -30,16 +30,18 @@ class _MaindrawerState extends State<Maindrawer> {
               ]),
             ),
             ListTile(
-              leading: Icon(Icons.home,size: 35,),
-              title: Text('Home',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),),
+              //tileColor: Colors.white,
+              leading: Icon(Icons.home,size: 35,color: Colors.white,),
+              title: Text('Home',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.white),),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/');
               },
             ),
             SizedBox(height: 5,),
             ListTile(
-              leading: Icon(Icons.stacked_bar_chart,size: 35,),
-              title: Text('Filter',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),),
+              //tileColor: Colors.white,
+              leading: Icon(Icons.category,size: 35,color: Colors.white,),
+              title: Text('Filter',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.white),),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/filterscreen');
               },
