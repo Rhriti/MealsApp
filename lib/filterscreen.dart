@@ -7,14 +7,24 @@ import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
 class Filterscreen extends StatefulWidget {
   Function filters;
-  Filterscreen(this.filters);
+  Map<String, bool> currstate;
+  Filterscreen(this.filters, this.currstate);
   @override
   State<Filterscreen> createState() => _FilterscreenState();
 }
 
 class _FilterscreenState extends State<Filterscreen> {
   //const Filterscreen({Key? key}) : super(key: key);
-  List<bool> sts = [false, false, false, false];
+  List<bool> sts = [false, false, false, false]; //v,l,g,vloong
+
+  @override
+  void initState() {
+    super.initState();
+    sts[0] = widget.currstate['isVegan'] as bool;
+    sts[1] = widget.currstate['isLactoseFree'] as bool;
+    sts[2] = widget.currstate['isGlutenFree'] as bool;
+    sts[3] = widget.currstate['isVegetarian'] as bool;
+  }
 
   Widget returntile(tits, sec, index) {
     return SwitchListTile(
@@ -59,6 +69,7 @@ class _FilterscreenState extends State<Filterscreen> {
               IconButton(
                   onPressed: () {
                     widget.filters(sts);
+                    Navigator.of(context).pushReplacementNamed('/');
                   },
                   icon: Icon(Icons.save)),
               SizedBox(

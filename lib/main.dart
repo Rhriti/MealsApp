@@ -24,7 +24,7 @@ class _MyappState extends State<Myapp> {
     'isLactoseFree': false
   };
 
-  var dummymeals=DUMMY_MEALS;
+  var dummymeals = DUMMY_MEALS;
 
   void filters(List sts) {
     setState(() {
@@ -48,10 +48,10 @@ class _MyappState extends State<Myapp> {
         }
         return true;
       }).toList();
+      print(change);
+      print(dummymeals);
     });
     //print(List.generate(dummymeals.length, (index) =>dummymeals[index].isGlutenFree));
-    print(change);
-    print(dummymeals);
   }
 
   @override
@@ -63,7 +63,7 @@ class _MyappState extends State<Myapp> {
         initialRoute: '/',
         routes: {
           '/myapp': (_) => Myapp(),
-          '/filterscreen': (_) => Filterscreen(filters),
+          '/filterscreen': (_) => Filterscreen(filters, change),
           '/homes': (_) => Homescreen(),
           '/meals_detail': (ctx) => Mealsscreen(dummymeals),
           '/recepie': (_) => Recepie(),
